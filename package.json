@@ -1,14 +1,35 @@
 {
   "name": "cou",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.3",
+  "description": "Core Util Javascript Lib",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test",
+    "test-travis": "npm run poor && npm test",
+    "poor": "browserify *test*.js | poor -b ie:6..8,chrome -R dot",
+    "readme": "pretty-readme coveralls gittip > readme.md"
   },
-  "author": "",
+  "author": "chunpu",
   "license": "ISC",
   "dependencies": {
     "min-is": "^1.1.8"
-  }
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "istanbul": "^0.3.6",
+    "mocha": "^2.1.0",
+    "poor": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunpu/cou.git"
+  },
+  "keywords": [
+    "util",
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/chunpu/cou/issues"
+  },
+  "homepage": "https://github.com/chunpu/cou#readme"
 }
