@@ -1,6 +1,7 @@
 cou
 ===
 
+[![Build status][travis-image]][travis-url]
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 [![Dependency Status][david-image]][david-url]
@@ -70,6 +71,8 @@ License
 
 [![License][license-image]][license-url]
 
+[travis-image]: https://img.shields.io/travis/chunpu/cou.svg?style=flat-square
+[travis-url]: https://travis-ci.org/chunpu/cou
 [coveralls-image]: https://img.shields.io/coveralls/chunpu/cou/gh-pages.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/chunpu/cou
 [gittip-image]: https://img.shields.io/gittip/chunpu.svg?style=flat-square
