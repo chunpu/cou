@@ -1,5 +1,7 @@
 var is = require('min-is')
 
+var slice = [].slice
+
 var _ = exports
 
 _.is = is
@@ -52,7 +54,20 @@ _.has = function(val, sub) {
 
 _.toArray = toArray
 
-_.slice = slice
+_.slice = function(arr, start, end) {
+	var ret = []
+	var len = getLength(arr)
+	if (len) {
+		start = start || 0
+		end = end || len
+		if (!(arr instanceof Object)) {
+			// IE8- dom object
+			arr = toArray(arr)
+		}
+		ret = slice.call(arr, start, end)
+	}
+	return ret
+}
 
 _.negate = negate
 
@@ -81,12 +96,10 @@ function getLength(arr) {
 	if (null != arr) return arr.length
 }
 
-function each(arr, fn, from, end) {
+function each(arr, fn) {
 	var len = getLength(arr)
 	if (len && is.fn(fn)) {
-		from = from || 0
-		end = end || len
-		for (var i = from; i < end; i++) {
+		for (var i = 0; i < len; i++) {
 			if (false === fn(arr[i], i, arr)) return
 		}
 	}
@@ -111,15 +124,9 @@ function toArray(arr) {
 	return ret
 }
 
-function slice(arr, start, end) {
-	arr = toArray(arr)
-	start = start || 0
-	end = end || arr.length
-	return arr.slice(start, end)
-}
 
 function extend(target) {
-	var sources = slice(arguments, 1)
+	var sources = slice.call(arguments, 1)
 	if (target) {
 		each(sources, function(src) {
 			each(_.keys(src), function(key) {
