@@ -100,9 +100,10 @@ function each(arr, fn) {
 	var len = getLength(arr)
 	if (len && is.fn(fn)) {
 		for (var i = 0; i < len; i++) {
-			if (false === fn(arr[i], i, arr)) return
+			if (false === fn(arr[i], i, arr)) break
 		}
 	}
+	return arr
 }
 
 function findIndex(arr, fn) {
@@ -150,7 +151,8 @@ function indexOf(val, sub) {
 	if (is.str(val)) return val.indexOf(sub)
 
 	return findIndex(val, function(item) {
-		return sub == item
+		// important!
+		return sub === item
 	})
 }
 

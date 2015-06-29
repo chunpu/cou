@@ -52,6 +52,11 @@ describe('each', function() {
 		_.each([1, 2, 3])
 		assert(true)
 	})
+	it('always return arguments[0]', function() {
+		var arr = [1, 2, 3]
+		assert(arr === _.each(arr, _.noop))
+		assert(null === _.each(null))
+	})
 })
 
 describe('map', function() {
@@ -137,6 +142,8 @@ describe('find', function() {
 describe('indexOf', function() {
 	it('should return index', function() {
 		assert(-1 == _.indexOf([1, 2, 3], 4))
+		assert(-1 == _.indexOf([1, 2, 3], [1]))
+		assert(-1 == _.indexOf([1, 2, 3], '1'))
 		assert(1 == _.indexOf([1, 2, 3], 2))
 	})
 })
