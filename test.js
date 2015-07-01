@@ -221,6 +221,36 @@ describe('keys', function() {
 	})
 })
 
+describe('size', function() {
+	it('should return size of array', function() {
+		var size = _.size([1, 2, 3])
+		assert(3 == size)
+	})
+	it('should return length of array like', function(done) {
+		var size = _.size({length: 1024})
+		assert(1024 == size)
+
+		var fn = function() {
+			assert(3 == _.size(arguments))
+			done()
+		}
+		fn(1, 2, 3)
+	})
+	it('should return size of object', function() {
+		var size = _.size({a: 1, b: 2})
+		assert(2 == size)
+	})
+	it('should return size of string', function() {
+		var size = _.size('foo')
+		assert(3 == size)
+	})
+	it('should return 0 of shit', function() {
+		var arr = [null, NaN, 0, '', 1024, false, true, undefined]
+		_.each(arr, function(val) {
+			assert(0 == _.size(val))
+		})
+	})
+})
 describe('trim', function() {
 	it('should ok', function() {
 		assert(_.trim('  qq  ') == 'qq')
@@ -240,3 +270,4 @@ describe('noop', function() {
 		assert(undefined === _.noop())
 	})
 })
+

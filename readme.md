@@ -52,6 +52,7 @@ assert(_.is.arraylike({0: 'foo', length: 1}))
 - `_.find`
 - `_.indexOf`
 - `_.toArray`
+- `_.size`
 - `_.has`
 - `_.slice`
 - `_.negate`

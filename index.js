@@ -83,6 +83,14 @@ _.keys = function(hash) {
 	return ret
 }
 
+_.size = function(arr) {
+	var len = getLength(arr)
+	if (null == len) {
+		len = _.keys(arr).length
+	}
+	return len
+}
+
 var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g
 
 _.trim = function(str) {
