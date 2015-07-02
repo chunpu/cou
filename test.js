@@ -221,6 +221,25 @@ describe('keys', function() {
 	})
 })
 
+describe('forIn', function() {
+	it('should iterate object', function() {
+		var obj = {a: 1}
+		var ret = _.forIn(obj, function(val, key, hash) {
+			assert(obj === hash)
+			assert(val === hash[key])
+			assert(3 == arguments.length)
+		})
+		assert(ret === obj)
+	})
+
+	it('do nothing when meet shit', function() {
+		var ret = _.forIn(null, function() {
+			assert(false)
+		})
+		assert(null === ret)
+	})
+})
+
 describe('size', function() {
 	it('should return size of array', function() {
 		var size = _.size([1, 2, 3])

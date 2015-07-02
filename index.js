@@ -71,22 +71,14 @@ _.slice = function(arr, start, end) {
 
 _.negate = negate
 
-_.keys = function(hash) {
-	var ret = []
-	if (hash) {
-		for (var key in hash) {
-			if (is.owns(hash, key)) {
-				ret.push(key)
-			}
-		}
-	}
-	return ret
-}
+_.forIn = forIn
+
+_.keys = keys
 
 _.size = function(arr) {
 	var len = getLength(arr)
 	if (null == len) {
-		len = _.keys(arr).length
+		len = keys(arr).length
 	}
 	return len
 }
@@ -138,8 +130,7 @@ function extend(target) {
 	var sources = slice.call(arguments, 1)
 	if (target) {
 		each(sources, function(src) {
-			each(_.keys(src), function(key) {
-				var val = src[key]
+			forIn(src, function(val, key) {
 				if (!is.undef(val)) {
 					target[key] = val
 				}
@@ -169,5 +160,24 @@ function reduce(arr, fn, prev) {
 		prev = fn(prev, item, i, arr)
 	})
 	return prev
+}
+
+function forIn(hash, fn) {
+	each(keys(hash), function(key) {
+		return fn(hash[key], key, hash)
+	})
+	return hash
+}
+
+function keys(hash) {
+	var ret = []
+	if (hash) {
+		for (var key in hash) {
+			if (is.owns(hash, key)) {
+				ret.push(key)
+			}
+		}
+	}
+	return ret
 }
 

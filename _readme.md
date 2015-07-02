@@ -31,6 +31,7 @@ assert(_.is.arraylike({0: 'foo', length: 1}))
 - `_.slice`
 - `_.negate`
 - `_.keys`
+- `_.forIn`
 - `_.trim`
 - `_.noop`
 
