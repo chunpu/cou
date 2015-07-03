@@ -127,8 +127,8 @@ function toArray(arr) {
 
 
 function extend(target) {
-	var sources = slice.call(arguments, 1)
 	if (target) {
+		var sources = slice.call(arguments, 1)
 		each(sources, function(src) {
 			forIn(src, function(val, key) {
 				if (!is.undef(val)) {
