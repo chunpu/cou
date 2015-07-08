@@ -163,21 +163,21 @@ function reduce(arr, fn, prev) {
 }
 
 function forIn(hash, fn) {
-	each(keys(hash), function(key) {
-		return fn(hash[key], key, hash)
-	})
+	if (hash) {
+		for (var key in hash) {
+			if (is.owns(hash, key)) {
+				if (false === fn(hash[key], key, hash)) break
+			}
+		}
+	}
 	return hash
 }
 
 function keys(hash) {
 	var ret = []
-	if (hash) {
-		for (var key in hash) {
-			if (is.owns(hash, key)) {
-				ret.push(key)
-			}
-		}
-	}
+	forIn(hash, function(val, key) {
+		ret.push(key)
+	})
 	return ret
 }
 
