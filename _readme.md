@@ -15,7 +15,7 @@ assert(_.is.arraylike({0: 'foo', length: 1}))
 
 #### Core Util Function
 
-- `_.extend`
+- `_.extend` same as `_.assign`
 - `_.each`
 - `_.map`
 - `_.filter`
@@ -28,6 +28,7 @@ assert(_.is.arraylike({0: 'foo', length: 1}))
 - `_.toArray`
 - `_.size`
 - `_.has`
+- `_.includes`
 - `_.slice`
 - `_.negate`
 - `_.keys`

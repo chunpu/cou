@@ -1,6 +1,6 @@
 {
   "name": "cou",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Core Util Javascript Lib",
   "main": "index.js",
   "scripts": {

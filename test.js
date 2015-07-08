@@ -168,14 +168,14 @@ describe('toArray', function() {
 	})
 })
 
-describe('has', function() {
+describe('includes', function() {
 	it('should return true', function() {
-		assert(true === _.has('qwer', 'we'))
-		assert(true === _.has([1, 2, 3], 2))
+		assert(true === _.includes('qwer', 'we'))
+		assert(true === _.includes([1, 2, 3], 2))
 	})
 	it('should return false', function() {
-		assert(false === _.has('qwer', 'ew'))
-		assert(false === _.has([1, 2, 3], 4))
+		assert(false === _.includes('qwer', 'ew'))
+		assert(false === _.includes([1, 2, 3], 4))
 	})
 })
 

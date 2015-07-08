@@ -6,7 +6,7 @@ var _ = exports
 
 _.is = is
 
-_.extend = extend
+_.extend = _.assign = extend
 
 _.each = each
 
@@ -48,7 +48,7 @@ _.find = function(arr, fn) {
 
 _.indexOf = indexOf
 
-_.has = function(val, sub) {
+_.includes = function(val, sub) {
 	return -1 != indexOf(val, sub)
 }
 
