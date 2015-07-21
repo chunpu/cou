@@ -61,6 +61,7 @@ assert(_.is.arraylike({0: 'foo', length: 1}))
 - `_.forIn`
 - `_.trim`
 - `_.noop`
+- `_.len` return length of object, unofficial
 
 
 Support

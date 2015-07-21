@@ -75,14 +75,6 @@ _.forIn = forIn
 
 _.keys = keys
 
-_.size = function(arr) {
-	var len = getLength(arr)
-	if (null == len) {
-		len = keys(arr).length
-	}
-	return len
-}
-
 var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g
 
 _.trim = function(str) {
@@ -91,6 +83,8 @@ _.trim = function(str) {
 }
 
 _.noop = function() {}
+
+_.len = getLength
 
 function getLength(arr) {
 	if (null != arr) return arr.length
