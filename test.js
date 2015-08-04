@@ -1,5 +1,6 @@
 var _ = require('./')
 var assert = require('assert')
+var is = _.is
 
 describe('extend', function() {
 	it('should basic extend', function() {
@@ -180,6 +181,12 @@ describe('includes', function() {
 })
 
 describe('slice', function() {
+	it('default return a array', function() {
+		assert.deepEqual(_.slice(), [])
+		assert.deepEqual(_.slice({}), [])
+		assert.deepEqual(_.slice([]), [])
+		assert.deepEqual(_.slice(123), [])
+	})
 	it('should create a new array', function() {
 		var arr = [1, 2, 3, 4]
 		var slice = _.slice(arr)
@@ -197,6 +204,31 @@ describe('slice', function() {
 	})
 	it('should auto adjust when out of range', function() {
 		assert.deepEqual(_.slice([1, 2, 3], -1, 100), [3])
+	})
+	it('slice support string', function() {
+		assert.deepEqual(_.slice('1234'), '1234')
+		assert.deepEqual(_.slice(''), '')
+		assert.deepEqual(_.slice('1234', 1, 3), '23')
+	})
+	it('should support old ie node list', function() {
+		var doc = global.document
+		if (doc) {
+			var nodeList = doc.getElementsByTagName('*')
+			var len = nodeList.length
+			var arr = _.slice(nodeList)
+			assert(is.array(arr))
+			assert(len > 0)
+			assert(arr.length === len)
+		}
+	})
+	it('support arguments', function(done) {
+		void function() {
+			var arr = _.slice(arguments)
+			assert(is.array(arr))
+			assert.deepEqual(arr, [1, 2, 3])
+			assert(arr != arguments)
+			done()
+		}(1, 2, 3)
 	})
 })
 

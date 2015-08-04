@@ -55,16 +55,17 @@ _.includes = function(val, sub) {
 _.toArray = toArray
 
 _.slice = function(arr, start, end) {
-	var ret = []
+	// support array and string
+	var ret = [] // default return array
 	var len = getLength(arr)
-	if (len) {
+	if (len >= 0) {
 		start = start || 0
 		end = end || len
-		if (!(arr instanceof Object)) {
-			// IE8- dom object
+		// raw array and string use self slice
+		if (!is.fn(arr.slice)) {
 			arr = toArray(arr)
 		}
-		ret = slice.call(arr, start, end)
+		ret = arr.slice(start, end)
 	}
 	return ret
 }
