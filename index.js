@@ -142,7 +142,7 @@ function negate(fn) {
 }
 
 function indexOf(val, sub) {
-	if (is.str(val)) return val.indexOf(sub)
+	if (is.string(val)) return val.indexOf(sub)
 
 	return findIndex(val, function(item) {
 		// important!
