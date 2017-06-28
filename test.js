@@ -186,6 +186,7 @@ describe('slice', function() {
 		assert.deepEqual(_.slice({}), [])
 		assert.deepEqual(_.slice([]), [])
 		assert.deepEqual(_.slice(123), [])
+		assert.deepEqual(_.slice([1, 2, 3], 0, 0), [])
 	})
 	it('should create a new array', function() {
 		var arr = [1, 2, 3, 4]

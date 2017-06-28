@@ -60,7 +60,9 @@ _.slice = function(arr, start, end) {
 	var len = getLength(arr)
 	if (len >= 0) {
 		start = start || 0
-		end = end || len
+		if (0 !== end) {
+			end = end || len
+		}
 		// raw array and string use self slice
 		if (!is.fn(arr.slice)) {
 			arr = toArray(arr)
