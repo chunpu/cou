@@ -12,7 +12,7 @@
   "author": "chunpu",
   "license": "ISC",
   "dependencies": {
-    "min-is": "latest"
+    "min-is": "github:chunpu/min-is"
   },
   "devDependencies": {
     "browserify": "latest",
